@@ -1,0 +1,76 @@
+.wraper{
+    margin-top: 350px;
+}
+.wraper h2{
+    text-align: center;
+    text-decoration: underline;
+    font-family: 'Playball', cursive;
+   font-weight: bold;
+   font-size: 36px;
+}
+.extra{
+    text-align: center;
+}
+.wrapItems{
+display: flex;
+
+}
+.lastitem{
+    background-color: rgba(244, 189, 137, 0.1);
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 30px;
+width: 43%;
+
+}
+.lastitem h3{
+    font-family: 'Playball', cursive;
+font-size: 20px;
+}
+
+.item{
+    background-color: rgba(244, 189, 137, 0.1);
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 30px;
+width: 50%;
+
+}
+.item h3{
+    font-family: 'Playball', cursive;
+font-size: 20px;
+}
+.prices{
+    display: flex;
+    justify-content: space-between;
+}
+.description{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+@media(max-width:1024px){
+    .wrapItems{
+        display:block;
+        padding-right: 0px;
+        padding-left: 0px;
+       
+    }
+    .item , .lastitem{
+        width: 95%;
+        height: 100%;
+    padding: 5px;
+    margin-left: 5px;
+    }
+    .item h3{
+        font-size: 16px;
+    }
+    .description{
+        font-size: 14px;
+        text-align: left;
+    }
+    .extra{
+        font-size: 14px;
+    }
+}
