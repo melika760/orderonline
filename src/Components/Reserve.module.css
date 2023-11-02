@@ -8,11 +8,21 @@
     font-size: 48px;
     color: #323A30;
 }
+.wrapform{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+.closebtn{
+    color: white;
+    background-color: #323A30;
+    width: 100px;
+}
 .num{
     padding: 18px 16px;
     border-radius: 4px;
 border: 1px solid  #323A30;
-margin: 10px;
+margin: 5px;
 width: 200px;
 cursor: pointer;
 }
@@ -20,7 +30,7 @@ cursor: pointer;
     padding: 16px 16px;
     border-radius: 4px;
 border: 1px solid  #323A30;
-margin: 10px;
+margin: 5px;
 width: 200px;
 cursor: pointer;
 }
@@ -29,7 +39,15 @@ cursor: pointer;
     background-color: #323A30;
     width: 200px;
     padding: 18px 16px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+    margin-left: 10px;
     
+}
+.errors{
+    font-size: 14px;
+    color: rgba(255, 0, 0, 0.744);
 }
 @media (max-width:968px){
    .wraper{

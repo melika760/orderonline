@@ -1,12 +1,53 @@
 import styles from "./Reserve.module.css";
-import Button from "../UI/Button";
+import { useState } from "react";
+import Modal from "../UI/Modal/Modal";
+import useInput from "../hooks/use-input";
+import Button from "../UI/Button"
 export default function Reserve(){
+    const[modal,setmodal]=useState(false);
+    const{enteredvalue:enteredDate,haserror:Datehaserror,ValueIsvalid:DateisValid,InputchangeHandler:DateChangehandler,blured:Dateblured}=useInput(value=>value.trim()!=="")
+    const{enteredvalue:enteredName,haserror:Namehaserror,ValueIsvalid:NameisValid,InputchangeHandler:NameChangehandler,blured:Nameblured}=useInput(value=>value.trim()!=="")
+    const{enteredvalue:enteredTime,haserror:Timehaserror,ValueIsvalid:TimeisValid,InputchangeHandler:TimeChangehandler,blured:Timeblured}=useInput(value=>value.trim()!=="")
+    const{enteredvalue:enteredNum,haserror:Numhaserror,ValueIsvalid:NumisValid,InputchangeHandler:NumChangehandler,blured:Numblured}=useInput(value=>value.trim()!=="" && value<5)
+   
+    function Submithandler(event){
+        event.preventDefault();
+    }
+    function closecard(){
+        setmodal(false)
+    }
+    function Showform(){
+        const formisNotvalid=!DateisValid || !NameisValid || !TimeisValid || !NumisValid;
+        if(formisNotvalid){
+            setmodal(false)
+            return;
+        }
+        setmodal(true)
+     }
     return(<div className={styles.wraper}>
         <h3>Book a Table</h3>
-        <form className={styles.form}>
-        <input type="date" placeholder="Date" className={styles.num}/>
-        <input type="time"  placeholder="Date" className={styles.set}/>
-        <input type="number" min={0}  placeholder="Number" className={styles.num}/>
-        <Button className={styles.btn}>Book</Button>
-    </form></div>)
+        <form className={styles.form} onSubmit={Submithandler}>
+        <input type="text"  placeholder="Name" className={styles.num} value={enteredName} onChange={NameChangehandler} onBlur={Nameblured}/>
+        
+        <input type="number" min={0}  placeholder="Number" className={styles.num} value={enteredNum} onChange={NumChangehandler} onBlur={Numblured}/>
+        
+        <input type="date" placeholder="Date" className={styles.num}  value={enteredDate} onChange={DateChangehandler} onBlur={Dateblured} />
+    
+        <input type="time"  placeholder="Date" className={styles.set}  value={enteredTime} onChange={TimeChangehandler} onBlur={Timeblured}/>
+    
+        <Button className={styles.btn} type="button" onClick={Showform}>Book</Button>
+        <div className={styles.errors}>
+    {Namehaserror && <p>please Enter your Name</p>} 
+    {Numhaserror && <p>please Enter Number less than 5</p>}
+    {Datehaserror && <p>please select the date</p>}
+    {Timehaserror && <p>please select time</p>}
+    </div>
+    </form>
+   
+    {modal && <Modal Onclose={closecard}>
+        <div className={styles.wrapform}><h3>Hello {enteredName}!</h3>
+        <p>You booked a table for {enteredNum} at {enteredTime} in {enteredDate}</p> 
+        <p>We hope you enjoy your Time at Dominique's Cafe</p>
+        <Button className={styles.closebtn} type="button" onClick={closecard}>Close</Button></div></Modal>}
+    </div>)
 }
