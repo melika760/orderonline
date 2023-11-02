@@ -4,7 +4,6 @@ export default function useInput(validatevalue){
     const[touch,settouched]=useState(false)
     const ValueIsvalid=validatevalue(enteredvalue);
     const haserror=!ValueIsvalid && touch;
-  
     function InputchangeHandler(event){
         setenteredvalue(event.target.value)
     }

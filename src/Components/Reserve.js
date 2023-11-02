@@ -27,21 +27,17 @@ export default function Reserve(){
     return(<div className={styles.wraper}>
         <h3>Book a Table</h3>
         <form className={styles.form} onSubmit={Submithandler}>
-        <input type="text"  placeholder="Name" className={styles.num} value={enteredName} onChange={NameChangehandler} onBlur={Nameblured}/>
+        <input type="text"  placeholder="Name" className={Namehaserror?styles.eror : styles.num} value={enteredName} onChange={NameChangehandler} onBlur={Nameblured}/>
         
-        <input type="number" min={0}  placeholder="Number" className={styles.num} value={enteredNum} onChange={NumChangehandler} onBlur={Numblured}/>
+        <input type="number" min={0}  placeholder="Number" className={Numhaserror?styles.eror:styles.num} value={enteredNum} onChange={NumChangehandler} onBlur={Numblured}/>
         
-        <input type="date" placeholder="Date" className={styles.num}  value={enteredDate} onChange={DateChangehandler} onBlur={Dateblured} />
+        <input type="date" placeholder="Date" className={Datehaserror?styles.eror:styles.num}  value={enteredDate} onChange={DateChangehandler} onBlur={Dateblured} />
     
-        <input type="time"  placeholder="Date" className={styles.set}  value={enteredTime} onChange={TimeChangehandler} onBlur={Timeblured}/>
-    
+        <input type="time"  placeholder="Date" className={Timehaserror?styles.erors:styles.set}  value={enteredTime} onChange={TimeChangehandler} onBlur={Timeblured}/>
+        {(Namehaserror || Numhaserror || Datehaserror|| Timehaserror) && <p className={styles.errors}>Please fill in all required fields and numbers of people should be less than 5!</p>} 
         <Button className={styles.btn} type="button" onClick={Showform}>Book</Button>
-        <div className={styles.errors}>
-    {Namehaserror && <p>please Enter your Name</p>} 
-    {Numhaserror && <p>please Enter Number less than 5</p>}
-    {Datehaserror && <p>please select the date</p>}
-    {Timehaserror && <p>please select time</p>}
-    </div>
+        
+  
     </form>
    
     {modal && <Modal Onclose={closecard}>
