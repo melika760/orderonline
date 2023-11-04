@@ -5,16 +5,20 @@ import useInput from "../hooks/use-input";
 import Button from "../UI/Button"
 export default function Reserve(){
     const[modal,setmodal]=useState(false);
-    const{enteredvalue:enteredDate,haserror:Datehaserror,ValueIsvalid:DateisValid,InputchangeHandler:DateChangehandler,blured:Dateblured}=useInput(value=>value.trim()!=="")
-    const{enteredvalue:enteredName,haserror:Namehaserror,ValueIsvalid:NameisValid,InputchangeHandler:NameChangehandler,blured:Nameblured}=useInput(value=>value.trim()!=="")
-    const{enteredvalue:enteredTime,haserror:Timehaserror,ValueIsvalid:TimeisValid,InputchangeHandler:TimeChangehandler,blured:Timeblured}=useInput(value=>value.trim()!=="")
-    const{enteredvalue:enteredNum,haserror:Numhaserror,ValueIsvalid:NumisValid,InputchangeHandler:NumChangehandler,blured:Numblured}=useInput(value=>value.trim()!=="" && value<5)
+    let{enteredvalue:enteredDate,haserror:Datehaserror,ValueIsvalid:DateisValid,InputchangeHandler:DateChangehandler,blured:Dateblured,setenteredvalue:setdate}=useInput(value=>value.trim()!=="")
+    let{enteredvalue:enteredName,haserror:Namehaserror,ValueIsvalid:NameisValid,InputchangeHandler:NameChangehandler,blured:Nameblured,setenteredvalue:setName}=useInput(value=>value.trim()!=="")
+    let{enteredvalue:enteredTime,haserror:Timehaserror,ValueIsvalid:TimeisValid,InputchangeHandler:TimeChangehandler,blured:Timeblured,setenteredvalue:settime}=useInput(value=>value.trim()!=="")
+    let{enteredvalue:enteredNum,haserror:Numhaserror,ValueIsvalid:NumisValid,InputchangeHandler:NumChangehandler,blured:Numblured,setenteredvalue:setnum}=useInput(value=>value.trim()!=="" && value<5)
    
     function Submithandler(event){
         event.preventDefault();
     }
     function closecard(){
-        setmodal(false)
+        setmodal(false);
+        setdate(enteredDate="");
+        setName(enteredName="")
+        settime(enteredTime="");
+        setnum(enteredNum="");
     }
     function Showform(){
         const formisNotvalid=!DateisValid || !NameisValid || !TimeisValid || !NumisValid;
@@ -22,7 +26,8 @@ export default function Reserve(){
             setmodal(false)
             return;
         }
-        setmodal(true)
+        setmodal(true);
+        
      }
     return(<div className={styles.wraper}>
         <h3>Book a Table</h3>

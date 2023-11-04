@@ -10,5 +10,5 @@ export default function useInput(validatevalue){
     function blured(){
         settouched(true)
     }
-return{enteredvalue,haserror,ValueIsvalid,InputchangeHandler,blured}
+return{enteredvalue,haserror,ValueIsvalid,InputchangeHandler,blured,setenteredvalue}
 }
