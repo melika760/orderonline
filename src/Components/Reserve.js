@@ -2,14 +2,14 @@ import styles from "./Reserve.module.css";
 import { useState } from "react";
 import Modal from "../UI/Modal/Modal";
 import useInput from "../hooks/use-input";
-import Button from "../UI/Button"
+import Button from "../UI/Button";
 export default function Reserve(){
     const[modal,setmodal]=useState(false);
     let{enteredvalue:enteredDate,haserror:Datehaserror,ValueIsvalid:DateisValid,InputchangeHandler:DateChangehandler,blured:Dateblured,setenteredvalue:setdate}=useInput(value=>value.trim()!=="")
     let{enteredvalue:enteredName,haserror:Namehaserror,ValueIsvalid:NameisValid,InputchangeHandler:NameChangehandler,blured:Nameblured,setenteredvalue:setName}=useInput(value=>value.trim()!=="")
     let{enteredvalue:enteredTime,haserror:Timehaserror,ValueIsvalid:TimeisValid,InputchangeHandler:TimeChangehandler,blured:Timeblured,setenteredvalue:settime}=useInput(value=>value.trim()!=="")
     let{enteredvalue:enteredNum,haserror:Numhaserror,ValueIsvalid:NumisValid,InputchangeHandler:NumChangehandler,blured:Numblured,setenteredvalue:setnum}=useInput(value=>value.trim()!=="" && value<5)
-   
+  
     function Submithandler(event){
         event.preventDefault();
     }

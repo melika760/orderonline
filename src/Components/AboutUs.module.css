@@ -5,6 +5,12 @@
 justify-content:center;
 
 }
+.card{
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+   font-size:11px ;
+}
 
 .aboutimg{
     width: 622px;
@@ -110,4 +116,5 @@ text-align: center;
  .btn{
     margin-bottom: 40px;
  }
+ .card{font-size: 11.5px;}
 }
