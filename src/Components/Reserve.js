@@ -9,7 +9,10 @@ export default function Reserve(){
     let{enteredvalue:enteredName,haserror:Namehaserror,ValueIsvalid:NameisValid,InputchangeHandler:NameChangehandler,blured:Nameblured,setenteredvalue:setName}=useInput(value=>value.trim()!=="")
     let{enteredvalue:enteredTime,haserror:Timehaserror,ValueIsvalid:TimeisValid,InputchangeHandler:TimeChangehandler,blured:Timeblured,setenteredvalue:settime}=useInput(value=>value.trim()!=="")
     let{enteredvalue:enteredNum,haserror:Numhaserror,ValueIsvalid:NumisValid,InputchangeHandler:NumChangehandler,blured:Numblured,setenteredvalue:setnum}=useInput(value=>value.trim()!=="" && value<5)
-  
+//   async function postdetails(){
+//     const response=await fetch("https://dominique-5aac4-default-rtdb.firebaseio.com/order.json",{method:"POST",body:JSON.stringify()})
+//   }
+//     useEffect(()=>{},[])
     function Submithandler(event){
         event.preventDefault();
     }

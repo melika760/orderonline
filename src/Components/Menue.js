@@ -9,7 +9,7 @@ import Juices from "../img/juices.png";
 import Smoothies from "../img/smoothie.png";
 import Softdrinks from "../img/Softdrink.png";
 import Hotdrinks from "../img/Hotdrinks.png";
-import BreakfastItems from "../Components/BreakfastItems";
+// import BreakfastItems from "../Components/BreakfastItems";
 import {HashLink as Link } from "react-router-hash-link";
 import StarterItem from "./StarterItem";
 import SaladItem from "./SaladItem";
@@ -21,9 +21,25 @@ import SmoothieItem from "./SmoothieItem";
 import SoftdrinksItem from "./SoftdrinksItem";
 import HotdrinksItem from "./HotdrinksItem";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import{faArrowUp} from "@fortawesome/free-solid-svg-icons"
+import{faArrowUp} from "@fortawesome/free-solid-svg-icons";
+
+import { useState } from "react";
+import BrfastItem from "./BrfastItem";
 
 export default function Menue(){
+    const[item,setitem]=useState([]);
+    async function fetchingdata(){
+        const response=await fetch("https://dominique-5aac4-default-rtdb.firebaseio.com/Breakfast.json");
+        const data= await response.json();
+    const loadmeal=[]
+    for(const key in data){
+        loadmeal.push({id:key,title:data[key].title,description:data[key].description,prices:data[key].price})
+    }
+    
+        setitem(loadmeal)
+    }
+ 
+   
     function Gotop(){
         window.scrollTo({
             top: 0,
@@ -32,8 +48,8 @@ export default function Menue(){
         });
     }
     const MenuLists=<div className={styles.wraper}>
-        <Link to="#BreakfastItem"className={styles.col} smooth><div >
-        <img src={Breakfast} alt="Breakfast"/>  <p>Breakfast</p></div></Link>
+        <div className={styles.col} smooth onClick={fetchingdata}><div >
+        <img src={Breakfast} alt="Breakfast"/>  <p>Breakfast</p></div></div>
         <Link to="#Starteritem"className={styles.col} smooth>  <div>
         <img src={Starters} alt="Starter"/> <p>Starter</p> </div></Link>
         <Link to="#SaladItem"className={styles.col} smooth><div >
@@ -64,7 +80,8 @@ export default function Menue(){
     return(<div className={styles.mobile}>
         <h1 className={styles.header}>Foods & Drinks</h1>
         {MenuLists}
-       <BreakfastItems/>
+<BrfastItem item={item} header="Breakfast"/>
+       {/* <BreakfastItems/> */}
        <button onClick={Gotop} className={styles.btn}><FontAwesomeIcon icon={faArrowUp} flip size="2xl" /><p>Go Top</p></button>
         <StarterItem/>
         <button onClick={Gotop} className={styles.btn}><FontAwesomeIcon icon={faArrowUp} flip size="2xl" /><p>Go Top</p></button>
