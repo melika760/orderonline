@@ -18,10 +18,10 @@ export default function Reserve(){
     }
     function closecard(){
         setmodal(false);
-        setdate(enteredDate="");
-        setName(enteredName="")
-        settime(enteredTime="");
-        setnum(enteredNum="");
+        // setdate(enteredDate="");
+        // setName(enteredName="")
+        // settime(enteredTime="");
+        // setnum(enteredNum="");
     }
     function Showform(){
         const formisNotvalid=!DateisValid || !NameisValid || !TimeisValid || !NumisValid;

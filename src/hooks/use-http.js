@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useState } from "react";
 export default function useHttp(){
-    const[item,setitem]=useState([]);
+    
 const[loading,setloading]=useState(false)
 const [error, setError] = useState(null);
   const sendRequest=useCallback(async (requestconfig,ApplyData)=>{
@@ -21,5 +21,5 @@ const [error, setError] = useState(null);
 
         setloading(false)
     },[])
-    return{item,sendRequest,loading,error}
+    return{sendRequest,loading,error}
 }

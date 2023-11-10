@@ -1,4 +1,4 @@
-import Class from "./BreakfastItems.module.css";
+import Class from "./Brfast.module.css";
 export default function SandwichItem(){
     return(<div className={Class.wraper} id="SandwichesItem">
     <h2>Sandwiches</h2>

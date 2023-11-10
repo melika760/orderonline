@@ -11,10 +11,13 @@
 .extra{
     text-align: center;
 }
-.wrapItems{text-align: center;
+.wrapItems{
   
     display: block;
 
+}
+.description{
+    text-align: left;
 }
 .lastitem{
     background-color: rgba(244, 189, 137, 0.1);
