@@ -1,6 +1,6 @@
 import styles from "./Reserve.module.css";
 import { useState } from "react";
-import Modal from "../UI/Modal/Modal";
+import Modal from "../UI/Modal";
 import useInput from "../hooks/use-input";
 import Button from "../UI/Button";
 export default function Reserve(){
